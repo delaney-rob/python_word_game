@@ -1,0 +1,32 @@
+{% extends "wordBase.html" %}
+
+{% block the_body %}
+<div id="scoreHeader">
+    <div id="rPage"><p>Top Ten Scoreboard</p></div>
+    <div id="time"><p>{{scoreResults}}</p></div>
+</div>
+
+<div id="resTable" class="CSSTableGenerator" style="width:600px;height:350px;">
+	<table style="margin: auto;">
+		<tr> 
+			<td>
+				Top Ten Leader Board
+			</td>										
+		</tr>
+		{% for line in shortList %}
+		<tr>
+			<td >
+				{{line}}
+			</td>										
+		</tr>
+		{% endfor %}				
+	</table>
+</div>
+<div id="footer">
+    <div id="resForm">
+        <form action="{{resFormAction}}" method="POST">
+            <p><input id="goButton"type="SUBMIT" value="Play The Game"></p>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,103 @@
+{% extends "wordBase.html" %}
+
+{% block the_body %}
+<div id="resHeader">
+    <div id="rPage"><p>Results Page</p></div>
+    <div id="time"><p>Your attempt took: {{timeTaken}} seconds.</p></div>
+</div>
+
+<div id="resWrapper">
+
+<div id="resTable" class="CSSTableGenerator" style="width:600px;height:250px;">
+			<table style="margin: auto;">
+				<tr> 
+					<td>
+						Your Words
+					</td>
+					<td >
+						Results
+					</td>					
+				</tr>
+				<tr>
+					<td >
+						{{word1}}
+					</td>
+					<td>
+						{{result1}}
+					</td>					
+				</tr>
+				<tr>
+					<td >
+						{{word2}}
+					</td>
+					<td>
+						{{result2}}
+					</td>					
+				</tr>
+				<tr>
+					<td >
+						{{word3}}
+					</td>
+					<td>
+						{{result3}}
+					</td>					
+				</tr>
+				<tr>
+					<td >
+						{{word4}}
+					</td>
+					<td>
+						{{result4}}
+					</td>					
+				</tr>
+				<tr>
+					<td >
+						{{word5}}
+					</td>
+					<td>
+						{{result5}}
+					</td>					
+				</tr>
+				<tr>
+					<td >
+						{{word6}}
+					</td>
+					<td>
+						{{result6}}
+					</td>					
+				</tr>
+				<tr>
+					<td >
+						{{word7}}
+					</td>
+					<td>
+						{{result7}}
+					</td>					
+				</tr>
+			</table>
+		</div>     
+</div>
+<div id="footer"> 
+    <div id="outcome">
+        <p>{{outcome}}</p>          
+    </div>
+    <div id="resForm">
+        {% if resFormAction == "/scoreBoard" %}
+            <form action="{{resFormAction}}" method="POST">
+                <p><label>Enter Your Name:</label><input type="TEXT" name="nameBox"></p>
+                <p><input id="goButton"type="SUBMIT" value="Submit Score"></p>
+            </form>
+        {% endif %}
+        {% if resFormAction == "/" %}
+            <form action="{{resFormAction}}">
+                <p><input id="goButton"type="SUBMIT" value="Try Again"></p>
+            </form>
+        {% endif %}    
+    </div>
+</div>    
+
+
+
+
+
+{% endblock%}

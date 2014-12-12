@@ -1,0 +1,107 @@
+# Author: Robert Delaney
+# SID: C00161771
+# Purpose: Word Game
+# Date: 14/11/2014
+
+import random, linecache, re#, time
+
+############################################################################################
+#Define two lists of words
+
+def cWordLists():                       
+    with open('/usr/share/dict/words') as wordListS:                
+        with open('3_over_wordList','w') as bList:
+            for lineB in wordListS:
+                lineB = lineB[:-1]
+                if re.match("^[a-zA-Z]*$", lineB): 
+                #if '\'' not in lineB:
+                    if len(lineB) >= 3 :
+                        print(lineB, file=bList)
+                    
+    with open('/usr/share/dict/words') as wordListL:
+        i = 0
+        with open('7_over_wordList','w') as aList:
+            for lineA in wordListL:
+                lineA = lineA[:-1]
+                if re.match("^[a-zA-Z]*$", lineA):
+                #if '\'' not in lineA:
+                    if len(lineA) >= 7:
+                        i += 1       
+                        print(lineA, file=aList)
+        return i #return number of lines in file so random word/line can be selected 
+        
+#############################################################################################
+#Check for duplicates in word list
+
+def dupCheck(userInputList):
+    dupList = list(userInputList)
+    if (len(dupList)!=len(set(dupList))) == True:
+        return 'dupFail'
+        
+#############################################################################################
+#Split list of words into list of letters and call listCompare Function for each letter list     
+
+def chkWordPres(userInputList, ranLine):
+    dCheck = dupCheck(userInputList)
+    if dCheck == 'dupFail':
+        return '\n\nYou have duplicate words in your list, you are useless!!\n\n'
+    ranLineList = list(ranLine[:-1])    
+    for word in userInputList:
+        letterList = list(word)
+        result = listCompare(ranLineList, letterList)
+        if result == 'nonWord':
+            return str('\n\n' + word + ' is not a real word, you have failed!!\n\n')
+        elif result == 'sameWord':
+            return str('\n\n' + word + ' is the same as the source word, muppet!!\n\n')
+        elif result == 'shortWord':
+            return str('\n\nHow is \'' + word + '\' three or more letters in length? Try harder!!\n\n' )
+    return '\n\nCongratulations, you have won and are now a high priestess!!\n\n'
+    
+    
+#############################################################################################
+#Compare two lists to see if user word is contained in random generated word    
+#Then checks to see if word is in dictionary
+
+def listCompare(ranLineList, letterList):
+    rList = list(ranLineList)
+    lList = list(letterList)
+    if rList == lList:
+        return 'sameWord'
+    elif len(letterList)  <=2:
+        return 'shortWord'
+    else:
+        for inA, letA in enumerate(rList):
+            restart = True
+            while restart:
+                restart = False
+                for inB, letB in enumerate(lList):
+                    if lList[inB] == rList[inA]:
+                        del rList[inA]
+                        del lList[inB]
+                        restart = True
+                    if len(lList) == 0:
+                        cWord = ''.join(letterList)
+                        with open('3_over_wordList','r') as sWords:
+                            for line in sWords:
+                                line = line[:-1]
+                                if cWord == line:
+                                    return 'goodWord'
+    return 'nonWord'    
+                
+#############################################################################################
+#Main body of code
+            
+num = cWordLists()        
+ranLine = linecache.getline('7_over_wordList', random.randint(1, num))
+ranLine = ranLine.lower()
+print ('\nYour random word is: ', ranLine)
+sTime = time.time()
+userInputList = []
+while len(userInputList) <= 6 :
+    userInputList.append(input('Please enter a word : ').lower())
+    
+result = chkWordPres(userInputList, ranLine)
+print (result)
+print ('Time : ' + str(round(time.time() - sTime, 2)) + '\n\n')
+
+

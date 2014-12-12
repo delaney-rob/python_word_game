@@ -1,0 +1,16 @@
+{% extends "wordBase.html" %}
+
+{% block the_body %}
+<p>Game page</p>
+<p>Your randomly chosen word is : {{ranWord}}</p>
+<form action="" method="POST">
+    <p><label>Word 1</label><input type="TEXT" name="word1"></p>
+    <p><label>Word 2</label><input type="TEXT" name="word2"></p>
+    <p><label>Word 3</label><input type="TEXT" name="word3"></p>
+    <p><label>Word 4</label><input type="TEXT" name="word4"></p>
+    <p><label>Word 5</label><input type="TEXT" name="word5"></p>
+    <p><label>Word 6</label><input type="TEXT" name="word6"></p>
+    <p><label>Word 7</label><input type="TEXT" name="word7"></p>
+    <p><input type="SUBMIT" value="Submit Words"></p>
+</form>
+{% endblock %}

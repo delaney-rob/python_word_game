@@ -1,0 +1,20 @@
+{% extends "wordBase.html" %}
+
+{% block the_body %}
+
+<div id="aboutText" style="margin-left: 265px; margin-top: 150px;">
+<p><strong>Would you like to play a game......</strong></p>
+<p>Welcome to the word game. This is a game that will test your powers of observation, speed and mental ability. 
+You will be supplied with a word that is a minimum of seven letters long. You are required to the construct seven words that are a minimum of three
+letters long. No duplicates are allowed in your list of words. No word can be a duplicate of the source word you are supplied.The words must be created 
+from the letters in the source word only. Each letter in the source word can only be used once per word that you create.Them's the rules. Don't mess it up.</p>
+</div>
+<div id="footer">
+    <div id="resForm">
+        <form action="{{resFormAction}}">
+            <p><input id="goButton"type="SUBMIT" value="Play The Game"></p>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

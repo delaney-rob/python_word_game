@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{the_title}}</title>
+
+        <link rel="stylesheet" href="/static/normalize.css">
+        <link rel="stylesheet" href="/static/main.css">
+        <link rel="stylesheet" href="/static/nav.css">
+        <link rel="stylesheet" href="/static/table.css">
+
+    </head>
+
+    <body>
+        <div class="nav">
+            <ul>
+                <li class=""><a href="{{home_link}}">Home</a></li>
+                <li class=""><a href="{{justScores}}">Scoreboard</a></li>
+                <li class=""><a href="{{aboutPage}}">About</a></li>                
+            </ul>
+        </div>
+        {% block the_body %}
+        {% endblock%}
+    </body>
+</html>
