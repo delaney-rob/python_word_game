@@ -15,7 +15,7 @@
             <ul>
                 <li class=""><a href="{{home_link}}">Home</a></li>
                 <li class=""><a href="{{justScores}}">Scoreboard</a></li>
-                <li class=""><a href="#">About</a></li>                
+                <li class=""><a href="{{aboutPage}}">About</a></li>                
             </ul>
         </div>
         {% block the_body %}
