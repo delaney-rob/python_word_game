@@ -27,7 +27,8 @@ def getWord():
     #ranLine = linecache.getline('7_over_wordList', random.randint(1, num))
     
     #session['ranLine'] = ranLine[:-1].lower()
-    session['ranLine'] = random.choice(list(open('7_over_wordList'))).rstrip()
+    ranline = random.choice(list(open('7_over_wordList'))).rstrip()
+    session['ranLine'] = ranline
     session['sTime'] = time.time()
     return render_template("wordStart.html",
                             the_title="Enter 7 Words",
