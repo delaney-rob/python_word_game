@@ -269,6 +269,6 @@ def aboutPage():
                             justScores = url_for("showScores"),
                             aboutPage = url_for("aboutPage"),)
 
-if __name__ == "__main__":
-    app.config['SECRET_KEY'] = 'thisismysecretkeywhichyouwillneverguesshahahahahahahaha'
-    app.run(debug=True)
+
+app.config['SECRET_KEY'] = 'thisismysecretkeywhichyouwillneverguesshahahahahahahaha'
+app.run(debug=True)
