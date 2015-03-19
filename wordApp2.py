@@ -24,8 +24,10 @@ def display_home():
 @app.route('/startGame')
 def getWord():
     num = 53354 #cWordLists() For speed, I have hard coded the number of words in the 7-letter word file
-    ranLine = linecache.getline('7_over_wordList', random.randint(1, num))
-    session['ranLine'] = ranLine[:-1].lower()
+    #ranLine = linecache.getline('7_over_wordList', random.randint(1, num))
+    
+    #session['ranLine'] = ranLine[:-1].lower()
+    session['ranLine'] = random.choice(list(open('7_over_wordList'))).rstrip()
     session['sTime'] = time.time()
     return render_template("wordStart.html",
                             the_title="Enter 7 Words",
